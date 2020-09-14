@@ -1,0 +1,17 @@
+name: UltimateShout
+version: ${project.version}
+main: nl.chimpgamer.ultimateshout.UltimateShout
+softdepend: [PlaceholderAPI, Vault]
+authors: [ChimpGamer]
+
+commands:
+  shout:
+    permission: ultimateshout.shout.use
+
+permissions:
+  ultimateshout.shout.use:
+    default: op
+  ultimateshout.shout.nocooldown:
+    default: op
+  ultimateshout.shout.reload:
+    default: op

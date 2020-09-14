@@ -1,0 +1,26 @@
+# The format of the message that will appear in the chat when shouting
+# You can use the following placeholders:
+# %playername%
+# %displayname%
+# With Vault you can use:
+# %vault_prefix%
+# %vault_suffix%
+# %vault_rank%
+# %vault_prefix_color%
+# %vault_suffix_color%
+# If you have PlaceholderAPI installed you can use all placeholders from PlaceholderAPI in here aswell.
+format: '&c&l|| &4&lSHOUT &c&l|| &r%vault_prefix% &e%playername% &8> &r%message%'
+
+# Shows the player how to use the command.
+help: '&7Please use &6/shout <message>'
+
+# Cooldown in seconds. Force players to wait before shouting again.
+# Set cooldown to -1 to disable cooldown.
+cooldown: 300
+
+# The message the players receive when they are in cooldown
+cooldownMessage: '&6You''ll have to wait %cooldown% second(s) before shouting again.'
+
+# With the shortcut you can allow players to just use <shortcut><message> in chat.
+# Example: !I'm shouting a nice message. If the shortcut is empty this feature is disabled
+shortcut: '!'
