@@ -1,5 +1,5 @@
 name: UltimateShout
-version: ${project.version}
+version: ${version}
 main: nl.chimpgamer.ultimateshout.UltimateShout
 softdepend: [PlaceholderAPI, Vault]
 authors: [ChimpGamer]
