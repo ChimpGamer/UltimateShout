@@ -33,11 +33,11 @@ public class TextUtils {
                 .replace("%displayname%", player.getDisplayName());
     }
 
-    public static @NotNull String formatColorCodes(String input) {
+    public static @NotNull String formatColorCodes(@NotNull String input) {
         return ChatColor.translateAlternateColorCodes('&', formatHexColors(input));
     }
 
-    private static @NotNull String formatHexColors(String input) {
+    private static @NotNull String formatHexColors(@NotNull String input) {
         try {
             String result = input;
             net.md_5.bungee.api.ChatColor.class.getMethod("of", String.class);
