@@ -10,6 +10,7 @@ import nl.chimpgamer.ultimateshout.utils.TextUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -78,7 +79,7 @@ public final class UltimateShout extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new ShoutListener(this), this);
     }
 
-    public void handleShout(Player player, String message) {
+    public void handleShout(@NotNull Player player, @NotNull String message) {
         if (Cooldown.isInCooldown(player.getUniqueId(), "shout") && !player.hasPermission("ultimateshout.shout.nocooldown")) {
             player.sendMessage(TextUtils.formatColorCodes(settings.getShoutCooldownMessage()
                     .replace("%cooldown%", String.valueOf(Cooldown.getTimeLeft(player.getUniqueId(), "shout")))));

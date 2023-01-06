@@ -7,13 +7,13 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class ShoutEvent extends Event implements Cancellable {
-    private final Player player;
-    private final String message;
+    private final @NotNull Player player;
+    private final @NotNull String message;
     private boolean cancelled;
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ShoutEvent(Player player, String message) {
+    public ShoutEvent(@NotNull Player player, @NotNull String message) {
         this.player = player;
         this.message = message;
     }
