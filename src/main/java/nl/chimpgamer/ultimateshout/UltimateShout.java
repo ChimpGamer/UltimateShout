@@ -96,9 +96,14 @@ public final class UltimateShout extends JavaPlugin {
             return;
         }
 
-        String format = TextUtils.parsePlaceholders(player, settings.getShoutFormat())
+        String shoutFormat = settings.getShoutFormat();
+        if (shoutFormat == null) {
+            shoutFormat = "Config error: Shout format seems to be missing from the configuration.";
+        }
+
+        shoutFormat = TextUtils.parsePlaceholders(player, shoutFormat)
                 .replace("%message%", message);
-        this.getServer().broadcastMessage(TextUtils.formatColorCodes(format));
+        this.getServer().broadcastMessage(TextUtils.formatColorCodes(shoutFormat));
     }
 
     public PluginHookManager getPluginHookManager() {

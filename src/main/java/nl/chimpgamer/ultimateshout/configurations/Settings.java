@@ -2,6 +2,8 @@ package nl.chimpgamer.ultimateshout.configurations;
 
 import nl.chimpgamer.ultimateshout.UltimateShout;
 import nl.chimpgamer.ultimateshout.utils.FileUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
@@ -17,24 +19,28 @@ public class Settings extends FileUtils {
         setupFile();
     }
 
+    @Nullable
     public String getShoutFormat() {
         return this.getString("format");
     }
 
+    @NotNull
     public String getShoutHelp() {
-        return this.getString("help");
+        return this.getString("help", "&7Please use &6/shout <message>");
     }
 
     public int getShoutCooldown() {
         return this.getInt("cooldown");
     }
 
+    @NotNull
     public String getShoutCooldownMessage() {
-        return this.getString("cooldownMessage");
+        return this.getString("cooldownMessage", "&6You''ll have to wait %cooldown% second(s) before shouting again.");
     }
 
+    @NotNull
     public String getShoutShortcut() {
-        return this.getString("shortcut");
+        return this.getString("shortcut", "!");
     }
 
     private void setupFile() {
