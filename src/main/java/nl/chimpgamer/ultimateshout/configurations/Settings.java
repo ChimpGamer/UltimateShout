@@ -38,9 +38,9 @@ public class Settings extends FileUtils {
         return this.getString("cooldownMessage", "&6You''ll have to wait %cooldown% second(s) before shouting again.");
     }
 
-    @NotNull
+    @Nullable
     public String getShoutShortcut() {
-        return this.getString("shortcut", "!");
+        return this.getString("shortcut");
     }
 
     private void setupFile() {
