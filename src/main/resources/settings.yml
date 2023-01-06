@@ -8,7 +8,8 @@
 # %vault_rank%
 # %vault_prefix_color%
 # %vault_suffix_color%
-# If you have PlaceholderAPI installed you can use all placeholders from PlaceholderAPI in here aswell.
+# If you have PlaceholderAPI installed you can use all placeholders from PlaceholderAPI in here as well.
+# Hex color format is: &#123456
 format: '&c&l|| &4&lSHOUT &c&l|| &r%vault_prefix% &e%playername% &8> &r%message%'
 
 # Shows the player how to use the command.
