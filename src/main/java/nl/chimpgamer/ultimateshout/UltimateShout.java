@@ -95,8 +95,8 @@ public final class UltimateShout extends JavaPlugin {
             return;
         }
 
-        String format = TextUtils.parsePlaceholders(player, settings.getShoutFormat()
-                .replace("%message%", message));
+        String format = TextUtils.parsePlaceholders(player, settings.getShoutFormat())
+                .replace("%message%", message);
         this.getServer().broadcastMessage(TextUtils.formatColorCodes(format));
     }
 
