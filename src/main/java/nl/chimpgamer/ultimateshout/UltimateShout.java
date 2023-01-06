@@ -11,6 +11,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Level;
+
 public final class UltimateShout extends JavaPlugin {
     private static UltimateShout instance;
 
@@ -23,10 +28,22 @@ public final class UltimateShout extends JavaPlugin {
     }
 
     @Override
+    public void onLoad() {
+        // Make sure that the UltimateShout folder exists.
+        try {
+            Path dataFolderPath = getDataFolder().toPath();
+            if (!Files.isDirectory(getDataFolder().toPath())) {
+                Files.createDirectories(dataFolderPath);
+            }
+        } catch (IOException ex) {
+            getLogger().log(Level.SEVERE, "Unable to create plugin directory", ex);
+        }
+    }
+
+    @Override
     public void onEnable() {
         // Plugin startup logic
         instance = this;
-        this.getDataFolder().mkdirs();
 
         this.initSettings();
         this.initPluginHookManager();
