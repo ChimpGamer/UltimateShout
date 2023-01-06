@@ -16,9 +16,11 @@ public class VaultHook extends PluginHook {
     public void onHook() {
         RegisteredServiceProvider<Chat> rsp = getUltimateShout().getServer().getServicesManager().getRegistration(Chat.class);
         if (rsp == null) {
+            getUltimateShout().getLogger().warning("It seems that vault is not installed. Proceeding without Vault support.");
             return;
         }
         this.chat = rsp.getProvider();
+        getUltimateShout().getLogger().info("Successfully hooked into Vault. Using " + chat.getName() + " via vault as chat provider.");
     }
 
     @Nullable
