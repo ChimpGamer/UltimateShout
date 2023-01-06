@@ -3,7 +3,7 @@ version: ${version}
 main: nl.chimpgamer.ultimateshout.UltimateShout
 softdepend: [PlaceholderAPI, Vault]
 authors: [ChimpGamer]
-api-version: '13'
+api-version: '1.13'
 
 commands:
   shout:
