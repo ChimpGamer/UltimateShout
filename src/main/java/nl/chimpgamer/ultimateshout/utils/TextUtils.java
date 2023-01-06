@@ -5,6 +5,7 @@ import net.md_5.bungee.api.ChatColor;
 import nl.chimpgamer.ultimateshout.UltimateShout;
 import nl.chimpgamer.ultimateshout.hooks.VaultHook;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,7 +13,7 @@ import java.util.regex.Pattern;
 public class TextUtils {
     private static final Pattern HEX_PATTERN = Pattern.compile("&#(?:[0-9a-fA-F]{6})");
 
-    public static String parsePlaceholders(Player player, String text) {
+    public static @NotNull String parsePlaceholders(@NotNull Player player, @NotNull String text) {
         final VaultHook vaultHook = UltimateShout.getInstance().getPluginHookManager().getVaultHook();
         if (UltimateShout.getInstance().getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             text = PlaceholderAPI.setPlaceholders(player, text);
@@ -32,11 +33,11 @@ public class TextUtils {
                 .replace("%displayname%", player.getDisplayName());
     }
 
-    public static String formatColorCodes(String input) {
+    public static @NotNull String formatColorCodes(String input) {
         return ChatColor.translateAlternateColorCodes('&', formatHexColors(input));
     }
 
-    private static String formatHexColors(String input) {
+    private static @NotNull String formatHexColors(String input) {
         try {
             String result = input;
             net.md_5.bungee.api.ChatColor.class.getMethod("of", String.class);
