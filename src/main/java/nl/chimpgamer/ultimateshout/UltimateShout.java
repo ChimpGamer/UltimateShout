@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.logging.Level;
 
 public final class UltimateShout extends JavaPlugin {
@@ -70,7 +71,7 @@ public final class UltimateShout extends JavaPlugin {
     }
 
     private void initCommands() {
-        this.getCommand("shout").setExecutor(new ShoutCommand(this));
+        Objects.requireNonNull(this.getCommand("shout")).setExecutor(new ShoutCommand(this));
     }
 
     private void initListeners() {
