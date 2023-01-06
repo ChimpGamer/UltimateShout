@@ -8,6 +8,7 @@ import nl.chimpgamer.ultimateshout.listeners.ShoutListener;
 import nl.chimpgamer.ultimateshout.utils.Cooldown;
 import nl.chimpgamer.ultimateshout.utils.TextUtils;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class UltimateShout extends JavaPlugin {
@@ -36,6 +37,9 @@ public final class UltimateShout extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+
+        // Unregister all event listeners of the plugin
+        HandlerList.unregisterAll(this);
     }
 
     private void initSettings() {
