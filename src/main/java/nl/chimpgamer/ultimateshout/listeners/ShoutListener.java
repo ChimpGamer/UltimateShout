@@ -24,7 +24,7 @@ public class ShoutListener implements Listener {
         if (player.hasPermission("ultimateshout.shout.use") &&
                 event.getMessage().startsWith(shortcut)) {
             event.setCancelled(true);
-            ultimateShout.handleShout(player, event.getMessage().replaceFirst("!", ""));
+            ultimateShout.handleShout(player, event.getMessage().replaceFirst(shortcut, ""));
         }
     }
 }
