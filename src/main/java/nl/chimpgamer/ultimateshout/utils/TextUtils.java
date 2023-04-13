@@ -11,11 +11,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextUtils {
-    private static final Pattern HEX_PATTERN = Pattern.compile("&#(?:[0-9a-fA-F]{6})");
+    private static final Pattern HEX_PATTERN = Pattern.compile("&#[0-9a-fA-F]{6}");
 
     public static @NotNull String parsePlaceholders(@NotNull Player player, @NotNull String text) {
         final VaultHook vaultHook = UltimateShout.getInstance().getPluginHookManager().getVaultHook();
-        if (UltimateShout.getInstance().getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+        if (UltimateShout.getInstance().isPluginEnabled("PlaceholderAPI")) {
             text = PlaceholderAPI.setPlaceholders(player, text);
         }
         if (vaultHook.isEnabled() && vaultHook.getChat() != null) {
@@ -37,16 +37,26 @@ public class TextUtils {
         return ChatColor.translateAlternateColorCodes('&', formatHexColors(input));
     }
 
-    private static @NotNull String formatHexColors(@NotNull String input) {
+    static boolean hexSupported;
+    static {
         try {
-            String result = input;
+            Class.forName("net.md_5.bungee.api.ChatColor");
             net.md_5.bungee.api.ChatColor.class.getMethod("of", String.class);
+            hexSupported = true;
+        } catch (ClassNotFoundException | NoSuchMethodException ex) {
+            hexSupported = false;
+        }
+    }
+
+    private static @NotNull String formatHexColors(@NotNull String input) {
+        if (hexSupported) {
+            String result = input;
             Matcher matcher = HEX_PATTERN.matcher(result);
             while (matcher.find()) {
-                result = result.replace(HEX_PATTERN.pattern(), "" + ChatColor.of(matcher.group().replaceFirst("&", "")));
+                result = result.replace(HEX_PATTERN.pattern(), String.valueOf(ChatColor.of(matcher.group().replaceFirst("&", ""))));
             }
             return result;
-        } catch (Exception ignored) {
+        } else {
             return input;
         }
     }

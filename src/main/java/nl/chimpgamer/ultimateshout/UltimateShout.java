@@ -114,4 +114,8 @@ public final class UltimateShout extends JavaPlugin {
     public Settings getSettings() {
         return settings;
     }
+
+    public boolean isPluginEnabled(String pluginName) {
+        return getServer().getPluginManager().isPluginEnabled(pluginName);
+    }
 }

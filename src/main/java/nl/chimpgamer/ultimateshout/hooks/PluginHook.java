@@ -14,7 +14,7 @@ public abstract class PluginHook {
     public abstract void onHook();
 
     public boolean isEnabled() {
-        return ultimateShout.getServer().getPluginManager().isPluginEnabled(this.getPluginName());
+        return ultimateShout.isPluginEnabled(this.getPluginName());
     }
 
     public String getPluginName() {
