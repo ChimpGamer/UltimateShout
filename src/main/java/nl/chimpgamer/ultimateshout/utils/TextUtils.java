@@ -21,6 +21,8 @@ public class TextUtils {
         if (vaultHook.isEnabled() && vaultHook.getChat() != null) {
             String prefix = vaultHook.getChat().getPlayerPrefix(player);
             String suffix = vaultHook.getChat().getPlayerSuffix(player);
+            if (prefix == null) prefix = "";
+            if (suffix == null) suffix = "";
             text = text
                     .replace("%vault_prefix%", prefix)
                     .replace("%vault_suffix%", suffix)
