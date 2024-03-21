@@ -17,14 +17,14 @@ public class ShoutListener implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onAsyncChat(AsyncPlayerChatEvent event) {
         final Player player = event.getPlayer();
+        final String message = event.getMessage();
         String shortcut = ultimateShout.getSettings().getShoutShortcut();
         if (shortcut == null || shortcut.isEmpty() || shortcut.equals(" ")) {
             return;
         }
-        if (player.hasPermission("ultimateshout.shout.use") &&
-                event.getMessage().startsWith(shortcut)) {
+        if (message.startsWith(shortcut) && player.hasPermission("ultimateshout.shout.use")) {
             event.setCancelled(true);
-            ultimateShout.handleShout(player, event.getMessage().replaceFirst(shortcut, ""));
+            ultimateShout.handleShout(player, message.replaceFirst(shortcut, ""));
         }
     }
 }
