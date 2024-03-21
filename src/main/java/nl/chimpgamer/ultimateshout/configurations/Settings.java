@@ -11,7 +11,7 @@ public class Settings extends FileUtils {
     private final UltimateShout ultimateShout;
 
     public Settings(UltimateShout ultimateShout) {
-        super(ultimateShout.getDataFolder().getAbsolutePath(), "settings.yml");
+        super(ultimateShout, ultimateShout.getDataFolder().toPath().resolve("settings.yml").toFile());
         this.ultimateShout = ultimateShout;
     }
 
