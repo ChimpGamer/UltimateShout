@@ -14,6 +14,7 @@ public class VaultHook extends PluginHook {
 
     @Override
     public void onHook() {
+        if (!isEnabled()) return;
         RegisteredServiceProvider<Chat> rsp = getUltimateShout().getServer().getServicesManager().getRegistration(Chat.class);
         if (rsp == null) {
             getUltimateShout().getLogger().warning("It seems that vault is not installed. Proceeding without Vault support.");
